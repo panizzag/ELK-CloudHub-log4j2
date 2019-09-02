@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+    <Appenders>
+        <RollingFile name="file" fileName="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}graylog-forwarding-test.log" 
+                 filePattern="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}graylog-forwarding-test-%i.log">
+            <PatternLayout pattern="%-5p %d [%t] [event: %X{correlationId}] %c: %m%n" />
+            <SizeBasedTriggeringPolicy size="10 MB" />
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+        <Socket name="socket" host="192.168.99.100" port="5000" protocol="TCP">
+		  <PatternLayout pattern="{&quot;log_timestamp&quot;:&quot;%d&quot; ,&quot;log_thread&quot;:&quot;[%t]&quot; , &quot;log_level&quot;:&quot;%-5p&quot; , &quot;messagel&quot;:&quot;%m&quot;}%n" /> 
+		 </Socket>
+    </Appenders>
+    <Loggers>     
+        <!-- Http Logger shows wire traffic on DEBUG. -->
+        <!--AsyncLogger name="org.mule.service.http.impl.service.HttpMessageLogger" level="DEBUG" /-->
+        <AsyncLogger name="org.mule.service.http" level="WARN"/>
+        <AsyncLogger name="org.mule.extension.http" level="WARN"/>
+    
+		<!-- Mule logger -->        
+        <AsyncLogger name="org.mule.runtime.core.internal.processor.LoggerMessageProcessor" level="INFO"/>
+ 		
+        <AsyncRoot level="INFO">
+            <AppenderRef ref="file" />
+            <AppenderRef ref="socket"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>

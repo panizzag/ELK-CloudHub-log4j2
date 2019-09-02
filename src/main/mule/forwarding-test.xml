@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<flow name="forwarding-testFlow" doc:id="1c85e34e-d0fe-4ded-9e65-fdc834f45f9e" >
+		<scheduler doc:name="Scheduler" doc:id="e72ce25b-f447-4898-b856-26e025dad7d6" >
+			<scheduling-strategy >
+				<fixed-frequency timeUnit="SECONDS" frequency="1"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="b193ea8a-83d3-49fb-a207-d65e89bcd0ce" message="I should be able to see this message in my ELK instance"/>
+	</flow>
+	<flow name="forwarding-testFlow-2" doc:id="9f42d8cc-7f97-4fbe-9800-1a2101bace9f" >
+		<scheduler doc:name="Scheduler" doc:id="bafbe905-9300-4dd0-b9c9-12bab49e0442" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="5000"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="ERROR" doc:name="Logger" doc:id="51e00ca4-4438-48a0-bb84-dfe6dbeebb76" message="This is an error" />
+	</flow>
+</mule>
