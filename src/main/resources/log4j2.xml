@@ -8,7 +8,7 @@
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
         <Socket name="socket" host="192.168.99.100" port="5000" protocol="TCP">
-		  <PatternLayout pattern="{&quot;log_timestamp&quot;:&quot;%d&quot; ,&quot;log_thread&quot;:&quot;[%t]&quot; , &quot;log_level&quot;:&quot;%-5p&quot; , &quot;messagel&quot;:&quot;%m&quot;}%n" /> 
+		  <PatternLayout pattern="{&quot;log_timestamp&quot;:&quot;%d&quot; ,&quot;log_thread&quot;:&quot;[%t]&quot; , &quot;log_level&quot;:&quot;%-5p&quot; , &quot;event&quot;: &quot;%X{correlationId}&quot;, &quot;messagel&quot;:&quot;%m&quot;}%n" /> 
 		 </Socket>
     </Appenders>
     <Loggers>     
