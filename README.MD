@@ -1,0 +1,16 @@
+#logstash example config
+
+input {
+	tcp {
+		port => 5000
+	}
+}
+
+output {
+	elasticsearch {
+		hosts => "elasticsearch:9200"
+		user => "elastic"
+		password => "changeme"
+		index => "mule"
+	}
+}
