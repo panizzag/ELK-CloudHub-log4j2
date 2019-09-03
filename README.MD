@@ -25,3 +25,8 @@ output {
 	}
 }
 ```
+
+
+## Kibana example dashboard based on metrics
+
+file: export.ndjson
