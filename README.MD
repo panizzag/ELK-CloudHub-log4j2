@@ -1,4 +1,4 @@
-#logstash example config
+# logstash example config
 
 ```javascript
 input {
